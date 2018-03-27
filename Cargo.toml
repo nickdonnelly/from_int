@@ -4,4 +4,4 @@ version = "0.1.0"
 authors = ["Nicholas Donnelly <nick@donnelly.cc>"]
 
 [dependencies]
-from_int_derive = { path = "from_int_derive" }
+from_int_derive = { version = "0.1.0", path = "from_int_derive" }
