@@ -1,4 +1,4 @@
-# from_int &emsp; [![Latest Version]][crates.io]
+# from_int &emsp; [![Latest Version](https://img.shields.io/crates/v/from_int.svg)][crates.io]
 
 [crates.io]: https://crates.io/crates/from_int
 
