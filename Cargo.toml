@@ -2,6 +2,8 @@
 name = "from_int"
 version = "0.1.0"
 authors = ["Nicholas Donnelly <nick@donnelly.cc>"]
+description = "A package to easily add a from_int method to enums with #[derive(FromInt)]"
+license = "MIT"
 
 [dependencies]
 from_int_derive = { version = "0.1.0", path = "from_int_derive" }

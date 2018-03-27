@@ -2,6 +2,8 @@
 name = "from_int_derive"
 version = "0.1.0"
 authors = ["Nicholas Donnelly <nick@donnelly.cc>"]
+description = "Derive crate for from_int"
+license = "MIT"
 
 [dependencies]
 syn = "0.12"
