@@ -7,7 +7,8 @@ use syn::DeriveInput;
 
 /// The trait that you derive to get `YourEnum::from_int(i32)`.
 trait FromInt {
-    fn from_int(i: i32) -> Self;
+    fn from_int(i: i32) -> Option<Self>
+        where Self: std::marker::Sized;
 }
 
 #[proc_macro_derive(FromInt)]
@@ -29,11 +30,11 @@ fn impl_from_int(syntax_tree: &syn::DeriveInput) -> quote::Tokens
 
         quote! {
             impl FromInt for #name {
-                fn from_int(i: i32) -> Self
+                fn from_int(i: i32) -> Option<Self>
                 {
                     match i {
                         #(#match_int)*
-                        _ => unreachable!()
+                        _ => None 
                     }
                 }
             }
@@ -62,7 +63,7 @@ fn match_int(
                     syn::Lit::Int(ref _lit) => {
                         let _lit_tokens = _lit.into_tokens();
                         let t = quote!{
-                            #_lit_tokens => #name::#ident,
+                            #_lit_tokens => Some(#name::#ident),
                         };
                         result_tokens.push(t);
                     },

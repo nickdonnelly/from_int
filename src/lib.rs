@@ -2,7 +2,8 @@
 
 /// The trait that you derive to get `YourEnum::from_int(i32)`.
 pub trait FromInt {
-    fn from_int(i: i32) -> Self;
+    fn from_int(i: i32) -> Option<Self>
+        where Self: std::marker::Sized;
 }
 
 #[cfg(test)]
@@ -26,15 +27,15 @@ mod tests {
         assert_eq!(TestEnum::VariantX as i32, 999);
         
         // from_int
-        assert_eq!(TestEnum::VariantOne, TestEnum::from_int(1));
-        assert_eq!(TestEnum::VariantTwo, TestEnum::from_int(2));
-        assert_eq!(TestEnum::VariantThree, TestEnum::from_int(528));
-        assert_eq!(TestEnum::VariantX, TestEnum::from_int(999));
+        assert_eq!(TestEnum::VariantOne, TestEnum::from_int(1).unwrap());
+        assert_eq!(TestEnum::VariantTwo, TestEnum::from_int(2).unwrap());
+        assert_eq!(TestEnum::VariantThree, TestEnum::from_int(528).unwrap());
+        assert_eq!(TestEnum::VariantX, TestEnum::from_int(999).unwrap());
     }
 
     #[test]
     #[should_panic]
     fn check_invalid_int() {
-        TestEnum::from_int(123);
+        TestEnum::from_int(123).unwrap();
     }
 }

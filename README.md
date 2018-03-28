@@ -24,11 +24,11 @@ enum TestEnum {
     VariantX = 999
 }
 
-assert_eq!(TestEnum::VariantOne, TestEnum::from_int(1));
-assert_eq!(TestEnum::VariantTwo, TestEnum::from_int(2));
-assert_eq!(TestEnum::VariantThree, TestEnum::from_int(528));
-assert_eq!(TestEnum::VariantX, TestEnum::from_int(999));
+assert_eq!(TestEnum::VariantOne, TestEnum::from_int(1).unwrap());
+assert_eq!(TestEnum::VariantTwo, TestEnum::from_int(2).unwrap());
+assert_eq!(TestEnum::VariantThree, TestEnum::from_int(528).unwrap());
+assert_eq!(TestEnum::VariantX, TestEnum::from_int(999).unwrap());
 
 // This would panic:
-assert_eq!(TestEnum::VariantOne, TestEnum::from_int(123));
+assert_eq!(None, TestEnum::from_int(123));
 ```

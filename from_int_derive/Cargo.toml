@@ -1,9 +1,10 @@
 [package]
 name = "from_int_derive"
-version = "0.1.0"
+version = "0.1.2"
 authors = ["Nicholas Donnelly <nick@donnelly.cc>"]
 description = "Derive crate for from_int"
 license = "MIT"
+repository = "https://github.com/nickdonnelly/from_int"
 
 [dependencies]
 syn = "0.12"
